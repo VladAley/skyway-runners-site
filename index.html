@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skyway Runners — comic-book runner above the clouds</title>
+<meta name="description" content="Skyway Runners: a comic-book endless runner. Jump, slide and wall-run across a city in the sky while your weapon clears the way. Coming soon to Google Play.">
+<meta property="og:title" content="Skyway Runners">
+<meta property="og:description" content="A comic-book endless runner across a city in the sky. Coming soon to Google Play.">
+<meta property="og:image" content="https://skyway-runners.pages.dev/assets/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1a0f14">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fira+Sans+Extra+Condensed:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #120a0e; --paper: #f8f2e8; --red: #d4141c; --amber: #ffb627; --dusk: #2a1520; --muted: #d9cbbd;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; overflow-x: hidden; background: var(--ink); color: var(--paper);
+    font: 600 19px/1.5 "Fira Sans Extra Condensed", system-ui, sans-serif; }
+  a { color: var(--amber); }
+  img { max-width: 100%; display: block; }
+
+  .hero { position: relative; min-height: min(100svh, 980px); display: grid; place-items: center; overflow: hidden;
+    background: var(--dusk) url(/assets/city_wide.webp) center 35% / cover no-repeat; isolation: isolate; }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(18,10,14,.15) 0%, rgba(18,10,14,.1) 45%, rgba(18,10,14,.95) 100%); }
+  .hero-inner { position: relative; width: min(1180px, 100%); padding: 48px 16px 64px; display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 560px) minmax(0, 1fr); align-items: end; gap: 8px; }
+  .runner { width: 100%; max-height: min(72svh, 700px); object-fit: contain; filter: drop-shadow(0 18px 24px rgba(0,0,0,.55)); }
+  .runner.left { transform: rotate(-4deg) translateY(4%); }
+  .runner.right { transform: rotate(4deg) translateY(4%) scaleX(-1); }
+  .center { text-align: center; align-self: center; }
+  .logo { width: 100%; filter: drop-shadow(0 10px 18px rgba(0,0,0,.6)); }
+  .tagline { font: 400 clamp(28px, 4.2vw, 44px)/1.05 Bangers, Impact, sans-serif; letter-spacing: .03em; margin: 8px 0 12px;
+    text-shadow: 3px 3px 0 var(--ink), -1px -1px 0 var(--ink); }
+  .lead { margin: 0 auto 24px; max-width: 34ch; color: var(--paper); text-shadow: 0 2px 8px rgba(0,0,0,.8); }
+  .cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px 12px; background: var(--red); color: var(--paper);
+    font: 400 26px/1 Bangers, Impact, sans-serif; letter-spacing: .05em; text-decoration: none;
+    border: 3px solid var(--paper); box-shadow: 5px 5px 0 var(--ink); transform: skew(-8deg); }
+  .cta span { display: inline-block; transform: skew(8deg); }
+  .cta small { font: 800 14px/1 "Fira Sans Extra Condensed", sans-serif; letter-spacing: .08em; color: var(--amber); }
+
+  section { width: min(1180px, 100%); margin: 0 auto; padding: 72px 16px; }
+  h2 { font: 400 clamp(36px, 5vw, 56px)/1 Bangers, Impact, sans-serif; letter-spacing: .03em; margin: 0 0 32px;
+    color: var(--amber); text-shadow: 3px 3px 0 #000; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+  .card { background: var(--paper); color: var(--ink); padding: 24px 22px 22px; border: 4px solid #000;
+    box-shadow: 8px 8px 0 var(--red); transform: rotate(var(--tilt, 0deg)); }
+  .card:nth-child(odd) { --tilt: -0.8deg; }
+  .card:nth-child(even) { --tilt: 0.7deg; }
+  .card h3 { font: 400 30px/1 Bangers, Impact, sans-serif; letter-spacing: .03em; margin: 0 0 10px; color: var(--red); }
+  .card p { margin: 0; font-weight: 600; }
+
+  .crew { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px; align-items: center; }
+  .crew-art { position: relative; aspect-ratio: 4 / 3; background: url(/assets/city_tall.webp) center 70% / cover;
+    border: 4px solid #000; box-shadow: 8px 8px 0 var(--amber); overflow: hidden; }
+  .crew-art img { position: absolute; bottom: -4%; height: 92%; width: auto; }
+  .crew-art img:first-child { left: 2%; }
+  .crew-art img:last-child { right: 2%; transform: scaleX(-1); }
+  .crew p { color: var(--muted); margin: 0 0 16px; }
+
+  footer { border-top: 3px solid #000; background: #0b0609; padding: 32px 16px 40px; text-align: center; color: var(--muted); font-size: 16px; }
+  footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; }
+
+  @media (max-width: 860px) {
+    .hero { background-image: url(/assets/city_tall.webp); background-position: center 30%; }
+    .hero-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 32px; }
+    .center { grid-column: 1 / -1; grid-row: 1; }
+    .runner { max-height: min(36svh, 340px); }
+    .crew { grid-template-columns: 1fr; }
+    .crew-art img { height: 68%; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .runner.left { animation: bob 3.2s ease-in-out infinite; }
+    .runner.right { animation: bob2 3.6s ease-in-out infinite; }
+    @keyframes bob { 50% { transform: rotate(-3deg) translateY(1%); } }
+    @keyframes bob2 { 50% { transform: rotate(3deg) translateY(1%) scaleX(-1); } }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <img class="runner left" src="/assets/sunny.webp" alt="Sunny, a runner in an orange visor, leaping forward" width="828" height="900">
+    <div class="center">
+      <img class="logo" src="/assets/logo.webp" alt="Skyway Runners" width="900" height="467">
+      <p class="tagline">Run the rooftops above the clouds</p>
+      <p class="lead">A comic-book endless runner across a city in the sky. Jump, slide and run along walls while your weapon clears the way.</p>
+      <a class="cta" href="#features" aria-label="Coming soon to Google Play"><span>Google Play <small>COMING SOON</small></span></a>
+    </div>
+    <img class="runner right" src="/assets/kai.webp" alt="Kai, a runner in goggles and a blue jacket, leaping forward" width="893" height="900">
+  </div>
+</header>
+
+<main>
+<section id="features">
+  <h2>How you run</h2>
+  <div class="features">
+    <article class="card">
+      <h3>Every move counts</h3>
+      <p>Three lanes, rooftops, bridges and other people's balconies. Jump, slide, take the ramps and run along walls to keep going.</p>
+    </article>
+    <article class="card">
+      <h3>Weapons on the move</h3>
+      <p>Your runner fights without stopping. Unlock new weapons, upgrade them and pick bonuses during the run.</p>
+    </article>
+    <article class="card">
+      <h3>Pick your road</h3>
+      <p>The skyway forks. Each route comes with its own twist and its own rewards — choose fast, the city won't wait.</p>
+    </article>
+    <article class="card">
+      <h3>Build the combo</h3>
+      <p>Chain jumps, slides and climbs to grow your combo, earn more and break into Ink World.</p>
+    </article>
+  </div>
+</section>
+
+<section class="crew">
+  <div class="crew-art" role="img" aria-label="Sunny and Kai above the sunset city">
+    <img src="/assets/sunny.webp" alt="" width="828" height="900">
+    <img src="/assets/kai.webp" alt="" width="893" height="900">
+  </div>
+  <div>
+    <h2>Choose your runner</h2>
+    <p>Start with Sunny or Kai, then unlock the rest of the crew. Classic camera or Cinematic Mode with comic-panel stop frames — run it your way.</p>
+    <p>Free to play. Watching an ad is always your choice and earns a reward.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <nav>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="mailto:moonpicklest@gmail.com">moonpicklest@gmail.com</a>
+  </nav>
+  <div>© 2026 Moonpickle St</div>
+</footer>
+</body>
+</html>
