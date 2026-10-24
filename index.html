@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skyway Runners — comic-book runner above the clouds</title>
-<meta name="description" content="Skyway Runners: a comic-book endless runner. Jump, slide and wall-run across a city in the sky while your weapon clears the way. Coming soon to Google Play.">
+<meta name="description" content="Skyway Runners: a comic-book endless runner. Jump, slide and wall-run across a city in the sky while your weapon clears the way. Available on Google Play. Coming soon to the App Store.">
 <meta property="og:title" content="Skyway Runners">
-<meta property="og:description" content="A comic-book endless runner across a city in the sky. Coming soon to Google Play.">
+<meta property="og:description" content="A comic-book endless runner across a city in the sky. Available on Google Play. Coming soon to the App Store.">
 <meta property="og:image" content="https://skyway-runners.pages.dev/assets/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,6 +41,7 @@
   .tagline { font: 400 clamp(28px, 4.2vw, 44px)/1.05 Bangers, Impact, sans-serif; letter-spacing: .03em; margin: 8px 0 12px;
     text-shadow: 3px 3px 0 var(--ink), -1px -1px 0 var(--ink); }
   .lead { margin: 0 auto 24px; max-width: 34ch; color: var(--paper); text-shadow: 0 2px 8px rgba(0,0,0,.8); }
+  .store-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
   .cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 28px 12px; background: var(--red); color: var(--paper);
     font: 400 26px/1 Bangers, Impact, sans-serif; letter-spacing: .05em; text-decoration: none;
     border: 3px solid var(--paper); box-shadow: 5px 5px 0 var(--ink); transform: skew(-8deg); }
@@ -92,7 +93,10 @@
       <img class="logo" src="/assets/logo.webp" alt="Skyway Runners" width="900" height="467">
       <p class="tagline">Run the rooftops above the clouds</p>
       <p class="lead">A comic-book endless runner across a city in the sky. Jump, slide and run along walls while your weapon clears the way.</p>
-      <a class="cta" href="#features" aria-label="Coming soon to Google Play"><span>Google Play <small>COMING SOON</small></span></a>
+      <div class="store-links">
+        <a class="cta" href="https://play.google.com/store/apps/details?id=com.moonpicklest.skywayrunners" aria-label="Get Skyway Runners on Google Play"><span>Google Play</span></a>
+        <span class="cta" aria-label="App Store - Coming Soon"><span>App Store <small>COMING SOON</small></span></span>
+      </div>
     </div>
     <img class="runner right" src="/assets/kai.webp" alt="Kai, a runner in goggles and a blue jacket, leaping forward" width="893" height="900">
   </div>
